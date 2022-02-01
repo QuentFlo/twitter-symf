@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <link rel="stylesheet" href=" {{ './css/tweet.css' }}">
+    <div>
+     <h1>Edit profile</h1>
+      {{ form_start(myForm) }}
+      <img src="{{ './uploads/'~filepath }}" class="card-img-top" alt="imgprofile">
+     {{ form_widget(myForm) }}
+     <button type="submit" class="button">{{ button_label|default('Apply') }}</button>
+     {{ form_end(myForm) }}
+     </div>
+{% endblock %}

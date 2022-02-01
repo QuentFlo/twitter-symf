@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TweetController!{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href=" {{ '/css/tweet.css' }}">
+<style>
+  body.linked {
+
+    .button,
+    h1 {
+      opacity: .3;
+      transition: opacity 300ms linear;
+    }
+  }
+
+  .button.-regular {
+    color: #202129;
+    background-color: #f2f2f2;
+
+    &:hover {
+      color: #202129;
+      background-color: #e1e2e2;
+      opacity: 1;
+    }
+
+    &:active {
+      background-color: #d5d6d6;
+      opacity: 1;
+    }
+  }
+</style>
+
+<body class="background__dark_theme">
+
+<head>
+
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+
+<div class="tweets-container">
+
+
+  {% include("./includes/header.html.twig") with {oldlocation, title} %}
+  <div class="card tweet2">
+    <span class="author" style="right: 50%">
+      <img class="avatar" src="{{post["avatar"]}}" />
+      {% if post["authorId"] == userId %}
+    <a class="name avatar__tweets" style="margin-left:5px" href="/profile">{{post["author"]}}</a>
+    {% else %}
+    <a class="name" style="margin-left:5px" href="/profile/{{post["authorId"]}}">{{post["author"]}}</a>
+    {% endif %}
+      <!-- <span class="username" style="margin-left:5px"></span> -->
+      <span class="hour" style="margin-left:5px; color: grey;">{{post["date"]}}</span>
+
+    </span>
+    <div class="content">
+      <div class="content" style="color: white">
+        {{post["content"] | raw}}
+      </div>
+    </div>
+    <div class="actions">
+      <span @click="$refs.modalName.openModal()" style="margin-left: 20%" class="fa fa-reply cursor">       {{post["nbrReply"]}}</span>
+      <span style="margin-left: 12%" class="fa fa-retweet cursor">       {{post["nbrRetweet"]}}</span>
+      <span style="margin-left: 12%" class="fa fa-heart cursor">       {{post["likes"]}}</span>
+      <!-- <span style="margin-left: 12%" class="fa fa-share-alt"></span> -->
+
+    </div>
+    <br>
+    <div class="card tweet2">
+      {% include("./includes/displayTweets.html.twig") with {Tweets : Replys, username}%}
+    </div>
+  </div>
+
+</div>
+
+
+
+</div>
+
+</body>
+
+{% endblock %}

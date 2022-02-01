@@ -1,0 +1,42 @@
+{% for User in Users %}
+<div class="card tweet cursor">
+  <span class="author" style="right: 50%">
+    <img class="avatar__tweets" src="{{User["avatar"]}}" />
+    {% if User["id"] == userId %}
+    <a class="name" style="margin-left:5px" href="/profile">{{username}}</a>
+    {% else %}
+    <a class="name" style="margin-left:5px" href="/profile/{{User["id"]}}">{{User["username"]}}</a>
+    {% endif %}
+    <span class="username" style="margin-left:5px">@{{User["username"]}}</span>
+    <span class="hour" style="margin-left:5px; color: grey;">{{User["joined"]}}</span>
+
+  </span>
+  {% if User["id"] == userId %}
+  <div class="content" style="cursor: pointer;" onclick="window.location.href='/profile'">
+    {% else %}
+    <div class="content" style="cursor: pointer;" onclick="window.location.href='/profile/{{User["id"]}}'">
+        {% endif %}
+    {{User["description"] | raw}}
+    <div class="content">
+    </div>
+  </div>
+  <div>
+    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+    {% if User["following"] == false %}
+      <form action="/follow/{{User["id"]}}" target="dummyframe" method="POST">
+        <button type="submit" class="follow_button" style="margin-top: 3%;">
+          <span>Follow</span>
+        </button>
+      </form>
+      {% else %}
+      <form action="/unfollow/{{User["id"]}}" target="dummyframe" method="POST">
+        <button type="submit" class="follow_button" style="margin-top: 3%;">
+          <span>Unfollow</span>
+        </button>
+      </form>
+      {%endif%}
+  </div>
+  <br>
+
+</div>
+{% endfor %}

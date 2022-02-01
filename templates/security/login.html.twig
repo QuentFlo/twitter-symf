@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href=" {{ './css/login.css' }}">
+<form method="post">
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <main class="main">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <h1>Se connecter à Twitter-Symfony</h1>
+        <form class="login-form">
+            <div class="input-section">
+                <div class="input-div">
+                    <input class="input" type="text" value="{{ last_username }}" name="username" iclass="form-control" required autofocus placeholder="Nom d'utilisateur">
+                </div>
+                <br>
+                <div class="input-div">
+                    <input class="input" type="password" name="password" class="form-control" required placeholder="Mot de passe">
+                        
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                </div>
+            </div>
+            <button class="connect" role="button" data-focusable="true" type="submit">
+                <span class="button-text">Se connecter</span>
+            </button>
+        </form>
+    </main>
+            
+    <a class="subscribe" href="/signup">
+        <button class="subscribe">
+            <span class="button-text">S'inscrire</span>
+        </button>
+    </a>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}# Search{% endblock %}
+
+{% block body %}
+
+<body style="background-color: #15202b;" class="background__dark_theme">
+  <link rel="stylesheet" href=" {{ '/css/home.css' }}">
+  <link rel="stylesheet" href=" {{ '/css/tweet.css' }}">
+
+  <head>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <div class="tweets-container">
+    {% include("./includes/header.html.twig") with {oldlocation, title} %}
+    {% include("./includes/displayTweets.html.twig") with {Tweets, username} %}
+  </div>
+
+</body>
+
+{% endblock %}

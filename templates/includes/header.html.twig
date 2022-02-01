@@ -1,0 +1,14 @@
+<div class="card tweets-header">
+  {% if title != "Home" %}
+    <a class="fa fa-arrow-left cursor" href="{{oldlocation}}" style="margin-left: -78%;margin-right: 18%; color: dodgerblue"></a>
+  {% endif %}
+    <h3>{{title}}</h3>
+  </div>
+  {% if title == "Home" or title=="Search" %}
+  <div class="card tweets-header">
+    <form id="nav-search" class="form-search" role="search" method="GET" action="/search">
+      <input id="search-query" class="search-input" type="text" placeholder="Search Twitter" name="search" />
+      <button class="icon" type="submit"></button>
+    </form>
+  </div>
+  {% endif %}

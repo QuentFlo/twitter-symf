@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href=" {{ './css/login.css' }}">
+
+<h1>S'inscrire à Twitter-Symfony</h1>
+
+<form action="/register" method="POST">
+    <div class="input-section">
+        <div class="input-div">
+            <input class="input" type="text" name="username" class="form-control" required autofocus placeholder="Nom d'utilisateur">
+        </div>
+        <br>
+        <div class="input-div">
+            <input class="input" type="password" name="password" class="form-control" required placeholder="Mot de passe">
+        </div>
+        <br>
+        <div class="input-div">
+            <input class="input" type="text" name="location" class="form-control" required placeholder="Location">
+        </div>
+        <br>
+        <div class="input-div">
+            <input class="input" type="text" name="description" class="form-control" required placeholder="Description">
+        </div>
+    </div>
+
+{% if e is defined %}
+    <p>Le nom de compte spécifié est déjà pris.</p>
+{% endif %}
+
+    <button class="subscribe" type="submit">
+        <span class="button-text">S'inscrire</span>
+    </button>
+
+</form>
+<a href="/login">
+    <button class="back">
+        <span>Retour</span>
+    </button>
+</a>
+{% endblock %}

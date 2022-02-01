@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+{% include("./includes/header.html.twig") with {oldlocation, title} %}
+<link rel="stylesheet" href=" {{ '/css/tweet.css' }}">
+<link rel="stylesheet" href=" {{ '/css/home.css' }}">
+<link rel="stylesheet" href=" {{ '/css/styles.css' }}">
+
+<div class="card" style="width: 100%; color:white">
+    <img src="{{avatar}}" style="width: 100px; height: 100px;" alt="imgprofile">
+    {% if id == userId %}
+    {{ form_start(myForm) }}
+    {{ form_widget(myForm) }}
+    <button type="submit" class="impbtn">{{ button_label|default('Change picture') }}</button>
+    {{ form_end(myForm) }}
+    <p>Or put a link to an image</p>
+    <iframe name="dummyFrame" id="dummyFrame" style="display: none;"></iframe>
+    <form action="/edit/profile" target="dummyFrame" method="POST">
+        <input name="profilePicture" type="text" />
+        <button type="submit">Update Profile Picture</button>
+    </form>
+    {% endif %}
+    <div class="text">
+        <h5>{{ username }}</h5>
+        <!-- <h6 class="card-subtitle mb-2 text-muted">{{ username }}</h6> -->
+        <p>{{ description }}</p>
+        <p>{{ location }}</p>
+        <p>{{ joined }}</p>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"> FOLLOWING ({{ following }})</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"> FOLLOWERS ({{ followers }})</a>
+            </li>
+        </ul>
+        <!-- {#            <a href="#" class="card-link">Card link</a> -->
+            <!-- <a href="#" class="card-link">Another link</a>#} -->
+        </div>
+    </div>
+        {% include("./includes/displayTweets.html.twig") with {Tweets, username}%}
+{% endblock %}

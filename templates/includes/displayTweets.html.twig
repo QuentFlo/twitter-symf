@@ -1,0 +1,49 @@
+{% for Tweet in Tweets %}
+<div class="card tweet cursor">
+  {% if Tweet["retweet"] != "" %}
+  <div class="retweet-msg-ctn">
+    {% if Tweet["authorId"] == userId %}
+    <span class="retweet-msg" style="color: dodgerblue; font-weight: bold; cursor: pointer; "
+      onclick="window.location.href='/profile'"">You</span>
+        <span>&nbsp;have retweeted this post</span>
+        {% else %}
+      <span class="retweet-msg" style="color: dodgerblue; font-weight: bold; cursor: pointer; "
+        onclick="window.location.href='/profile/{{Tweet["authorId"]}}'">{{Tweet["author"]}}</span>
+        <span>&nbsp;has retweeted</span>
+      {% endif %}
+  </div>
+  {% endif %}
+  {% if Tweet["replyTo"] != "" %}
+  <div class="retweet-msg-ctn">
+    {% if Tweet["authorId"] == userId %}
+    <span class="retweet-msg" style="color: dodgerblue; font-weight: bold; cursor: pointer; "
+      onclick="window.location.href='/profile'"">You</span>
+      <span>&nbsp;has replied to this <a href="/post/{{Tweet["replyTo"]}}">post</a></span>
+      {% else %}
+      <span class="retweet-msg" style="color: dodgerblue; font-weight: bold; cursor: pointer; "
+        onclick="window.location.href='/profile/{{Tweet["authorId"]}}'">{{Tweet["username"]}}</span>
+        <span>&nbsp;has replied to this <a href="/post/{{Tweet["replyTo"]}}">post</a></span>
+      {% endif %}
+  </div>
+  {% endif %}
+  <span class="author" style="right: 50%">
+    <img class="avatar__tweets" src="{{Tweet["avatar"]}}" />
+    {% if Tweet["authorId"] == userId %}
+    <a class="name" style="margin-left:5px" href="/profile">{{Tweet["author"]}}</a>
+    {% else %}
+    <a class="name" style="margin-left:5px" href="/profile/{{Tweet["authorId"]}}">{{Tweet["author"]}}</a>
+    {% endif %}
+    <span class="username" style="margin-left:5px">@{{Tweet["author"]}}</span>
+    <span class="hour" style="margin-left:5px; color: grey;">{{Tweet["date"]}}</span>
+
+  </span>
+  <div class="content" style="cursor: pointer;" onclick="window.location.href='/post/{{Tweet["id"]}}'">
+    {{Tweet["content"] | raw}}
+    <div class="content">
+    </div>
+  </div>
+
+  {% include("./includes/actionButtons.html.twig") with Tweet%}
+
+</div>
+{% endfor %}

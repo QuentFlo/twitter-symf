@@ -1,0 +1,144 @@
+.parent {
+    position: relative;
+}
+
+.child1 {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 0;
+    left: 0;
+}
+
+.child2 {
+    z-index: 1;
+}
+
+.nav-pos {
+    margin-top: 900px;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.background__dark_theme {
+    background-color: #15202b;
+}
+
+
+.avatar__tweets {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+}
+
+.tweet>.author {
+    margin-bottom: 2%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+
+.tweet>.content {
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+.block {
+    position: absolute;
+  }
+  
+  .block-left {
+    margin-left: 19%;
+  }
+  
+  .block-center {
+    margin-left: 42%;
+  }
+  
+  .block-right {
+    right: 27%;
+  }
+
+  .home_button {
+    background-color: rgb(29, 161, 242);
+    width: 4%;
+    height: 25px;
+    margin-top: 1%;
+    margin-left: 85%;
+    border: 1px;
+    border-radius: 8px;
+    position: fixed;
+  }
+  
+  .home_button span {
+    color: white;
+  }
+
+  .profile_button {
+    background-color: rgb(29, 161, 242);
+    width: 4%;
+    height: 25px;
+    margin-top: 1%;
+    margin-left: 90%;
+    border: 1px;
+    border-radius: 8px;
+    position: fixed;
+  }
+  
+  .profile_button span {
+    color: white;
+  }
+  
+  .logout_button {
+    width: 4%;
+    height: 25px;
+    margin-top: 1%;
+    margin-left: 95%;
+    border: 1px;
+    border-radius: 8px;
+    position: fixed;
+  }
+
+  .tweet {
+  /*display: inline;*/
+  /*display: block;*/
+  position: relative;
+  border-radius: 0;
+  margin-bottom: 1%;
+  border: solid 1px #38444d;
+  background-color: #15202b;
+  color: white;
+  }
+
+  .card {
+    border: solid 1px #38444d !important;
+    border-radius: 4px;
+    padding: 12px;
+    background-color: #15202b !important;
+  }
+
+  .tweets-header {
+    color: white;
+    background-color: #15202b;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: -1px;
+  }
+
+  .follow_button {
+    background-color: rgb(29, 161, 242);
+    width: 12%;
+    height: 8%;
+    margin-bottom: 20px;
+    border: 1px;
+    border-radius: 8px;
+  }
+
+  .follow_button span {
+    color: rgba(255, 255, 255, 0.733);
+  }
